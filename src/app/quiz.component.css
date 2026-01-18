@@ -7,7 +7,7 @@
   gap: 1rem;
   align-items: flex-start;
   padding: 18px;
-  background-image: url('/assets/stage-bg.png'), linear-gradient(185deg, #3c1964, #516c93, #5f2092);
+  background-image: url('assets/stage-bg.png'), linear-gradient(185deg, #3c1964, #516c93, #5f2092);
   background-size: cover;
   background-position: center;
   color: #fff;

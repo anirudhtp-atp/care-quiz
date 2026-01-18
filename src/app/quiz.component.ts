@@ -138,7 +138,7 @@ export class QuizComponent implements OnInit, OnDestroy {
       this.state.score += 1;      // global score (preserved)
       this.roundScore += 1;       // per-round score
       this.feedbackMessage = 'Yay!!! Well done';
-      this.emojiSrc = "/assets/avatars/star-1.png";
+      this.emojiSrc = "assets/avatars/star-1.png";
       this.emojiAlt = "Stars"
 
     } else {
@@ -148,7 +148,7 @@ export class QuizComponent implements OnInit, OnDestroy {
       const ci = this.question.answer;
       const text = this.question.options[ci];
       this.feedbackMessage = `Oops!!! <br>Correct answer: ${text}`;
-      this.emojiSrc = "/assets/avatars/oops.png";
+      this.emojiSrc = "assets/avatars/oops.png";
       this.emojiAlt = "Oops";
 
     }
