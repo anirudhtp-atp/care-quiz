@@ -1,0 +1,1 @@
+import{k as l}from"./chunk-35XRTOFD.js";var t=class e{userName=null;selectedClass=null;selectedAvatar=null;score=0;lastResult=null;lastRoundScore;reset(){this.score=0,this.lastResult=null}static \u0275fac=function(r){return new(r||e)};static \u0275prov=l({token:e,factory:e.\u0275fac,providedIn:"root"})};export{t as a};
