@@ -17,7 +17,7 @@ export class Result {
   total = 0;
 
   // You can adjust the file extension if your asset is .webp/.svg
-  winnerEmojiSrc = 'assets/avatars/winner.png';
+  winnerEmojiSrc = '/assets/avatars/winner.png';
 
   constructor(public state: GameStateService, private router: Router) {
     // Prefer navigation extras (robust on this navigation)

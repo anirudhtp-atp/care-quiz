@@ -17,19 +17,19 @@ export class AvatarSelectionComponent {
   avatarType: string = 'super-heroes';
   showCredits = false; 
   classes = Array.from({ length: 8 }, (_, i) => i + 1);
-  // Avatars can include an `img` path. Place avatar images under `srcassets/avatars/` or `publicassets/avatars/`.
+  // Avatars can include an `img` path. Place avatar images under `src/assets/avatars/` or `public/assets/avatars/`.
   avatars = [
-    { id: 'boy-1', label: '👦', img: `assets/avatars/${this.avatarType}/boy-1.png` },
-    { id: 'girl-1', label: '👧', img: `assets/avatars/${this.avatarType}/girl-1.png` },
+    { id: 'boy-1', label: '👦', img: `/assets/avatars/${this.avatarType}/boy-1.png` },
+    { id: 'girl-1', label: '👧', img: `/assets/avatars/${this.avatarType}/girl-1.png` },
 
-    { id: 'boy-2', label: '👦', img: `assets/avatars/${this.avatarType}/boy-2.png` },
-    { id: 'girl-2', label: '👧', img: `assets/avatars/${this.avatarType}/girl-2.png` },
+    { id: 'boy-2', label: '👦', img: `/assets/avatars/${this.avatarType}/boy-2.png` },
+    { id: 'girl-2', label: '👧', img: `/assets/avatars/${this.avatarType}/girl-2.png` },
 
-    { id: 'boy-3', label: '👦', img: `assets/avatars/${this.avatarType}/boy-3.png` },
-    { id: 'girl-3', label: '👧', img: `assets/avatars/${this.avatarType}/girl-3.png` },
+    { id: 'boy-3', label: '👦', img: `/assets/avatars/${this.avatarType}/boy-3.png` },
+    { id: 'girl-3', label: '👧', img: `/assets/avatars/${this.avatarType}/girl-3.png` },
 
-    { id: 'boy-4', label: '👦', img: `assets/avatars/${this.avatarType}/boy-4.png` },
-    { id: 'girl-4', label: '👧', img: `assets/avatars/${this.avatarType}/girl-4.png` }
+    { id: 'boy-4', label: '👦', img: `/assets/avatars/${this.avatarType}/boy-4.png` },
+    { id: 'girl-4', label: '👧', img: `/assets/avatars/${this.avatarType}/girl-4.png` }
   ];
 
   selectedClass: number | null = null;
