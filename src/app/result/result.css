@@ -31,7 +31,7 @@
 
   /* EXACT background from your quiz page */
   background-image: 
-    url('//assets/stage-bg.png'),
+    url('/assets/stage-bg.png'),
     linear-gradient(185deg, #3c1964, #516c93, #5f2092);
   background-size: cover;
   background-position: center;

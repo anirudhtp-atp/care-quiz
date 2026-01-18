@@ -133,22 +133,22 @@ export class QuizComponent implements OnInit, OnDestroy {
 
     this.state.lastResult = correct ? 'correct' : 'wrong';
     if (correct) {
-      const audio = new Audio(`/assets/sounds/correct.mp3`);
+      const audio = new Audio(`assets/sounds/correct.mp3`);
       audio.play();
       this.state.score += 1;      // global score (preserved)
       this.roundScore += 1;       // per-round score
       this.feedbackMessage = 'Yay!!! Well done';
-      this.emojiSrc = "/assets/avatars/star-1.png";
+      this.emojiSrc = "assets/avatars/star-1.png";
       this.emojiAlt = "Stars"
 
     } else {
       // Show ONLY the correct answer TEXT (no A/B/C/D)
-      const audio = new Audio(`/assets/sounds/wrong.mp3`);
+      const audio = new Audio(`assets/sounds/wrong.mp3`);
       audio.play();
       const ci = this.question.answer;
       const text = this.question.options[ci];
       this.feedbackMessage = `Oops!!! <br>Correct answer: ${text}`;
-      this.emojiSrc = "/assets/avatars/oops.png";
+      this.emojiSrc = "assets/avatars/oops.png";
       this.emojiAlt = "Oops";
 
     }
@@ -180,7 +180,7 @@ export class QuizComponent implements OnInit, OnDestroy {
   }
   private goToResult() {
 
-    const audio = new Audio(`/assets/sounds/victory.mp3`);
+    const audio = new Audio(`assets/sounds/victory.mp3`);
     audio.play();
 
     // Persist this round's score on shared state (tiny service addition below)

@@ -33,9 +33,9 @@
           <!-- Left: Player -->
           <div class="chair player">
             <div class="avatar-svg player-svg" aria-hidden="true">
-              <img *ngIf="state.selectedAvatar && state.selectedAvatar.startsWith('/')" [src]="state.selectedAvatar"
+              <img *ngIf="state.selectedAvatar && state.selectedAvatar.startsWith('assets')" [src]="state.selectedAvatar"
                 alt="player" class="avatar-img" />
-              <ng-container *ngIf="!state.selectedAvatar || !state.selectedAvatar.startsWith('/')">
+              <ng-container *ngIf="!state.selectedAvatar || !state.selectedAvatar.startsWith('assets')">
                 <!-- simple stylized full-body SVG for player (facing right) -->
               </ng-container>
             </div>
@@ -54,7 +54,7 @@
           <!-- Right: Grandpa -->
           <div class="chair elder">
             <div class="avatar-svg elder-svg" aria-hidden="true">
-              <img src="/assets/avatars/elder.png" alt="elder" class="avatar-img" />
+              <img src="assets/avatars/elder.png" alt="elder" class="avatar-img" />
               <ng-container *ngIf="false"></ng-container>
             </div>
             <div class="seat">Grandpa</div>

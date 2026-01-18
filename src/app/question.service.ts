@@ -22,7 +22,7 @@ export class QuestionService {
   }
 
   private loadFromCsv() {
-    this.http.get('/assets/sample_questions.csv', { responseType: 'text' })
+    this.http.get('assets/sample_questions.csv', { responseType: 'text' })
       .subscribe(csvData => {
         const parsed = Papa.parse(csvData, { header: true });
         const levels: { [level: number]: Question[] } = {};
