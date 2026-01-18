@@ -1,0 +1,182 @@
+
+/* ----------------------------------------------------
+   RESULT SCREEN — PROFESSIONAL KBC-STYLE DESIGN
+   (BACKGROUND RETAINED EXACTLY AS in your snippet)
+   ---------------------------------------------------- */
+
+/* Theme Tokens */
+:root {
+  --gold: #ffd700;
+  --gold-2: #ffed4e;
+  --text: #ffffff;
+
+  /* Colors you already use in quiz page */
+  --bg1: #3c1964;
+  --bg2: #516c93;
+  --bg3: #5f2092;
+
+  --card-shadow: 0 18px 60px rgba(0,0,0,0.55);
+}
+
+/* SAME BACKGROUND — NOT CHANGED */
+.result-wrap {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 18px;
+  gap: 1rem;
+  color: var(--text);
+
+  /* EXACT background from your quiz page */
+  background-image: 
+    url('/assets/stage-bg.png'),
+    linear-gradient(185deg, #3c1964, #516c93, #5f2092);
+  background-size: cover;
+  background-position: center;
+}
+
+/* ------------------------------
+   CARD (Quiz‑style polished panel)
+   ------------------------------ */
+.card {
+  margin-top: 40px;
+  width: max-content;
+  padding: 32px 28px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgb(198 149 183 / 85%), rgb(122 74 124 / 18%));
+  border: 2px solid black;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  color: white;
+  animation: fadeUp 0.6s ease-out;
+}
+
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(40px) scale(0.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* -----------------------
+   Winner Emoji Styling
+   ----------------------- */
+.winner-emoji {
+  width: 150px;
+  height: auto;
+  display: block;
+  margin: 0 auto 18px;
+
+  filter: 
+    drop-shadow(0 0 12px rgba(255,215,0,0.65))
+    drop-shadow(0 0 24px rgba(255,215,0,0.35));
+
+  animation: emojiPulse 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes emojiPulse {
+  0% { transform: scale(0.96); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+/* -----------------------
+   Titles
+   ----------------------- */
+.title {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-bottom: 6px;
+  text-shadow: 0 2px 18px rgba(0,0,0,0.35);
+  color: white;
+}
+
+.subtitle {
+  opacity: 0.9;
+  margin-bottom: 22px;
+  font-weight: 700;
+}
+
+/* -----------------------
+   Gold Score Badge
+   ----------------------- */
+.score-badge {
+  margin: 10px auto 26px;
+  width: max(240px, 46%);
+  padding: 16px 22px;
+  border-radius: 14px;
+
+  background: linear-gradient(90deg, #3a3a88, #201f4a);
+  box-shadow: 0 5px 32px rgb(229 226 210 / 45%);
+  color: white;
+}
+
+.score-badge .label {
+  font-size: 0.9rem;
+  font-weight: 800;
+  opacity: 0.85;
+}
+.score-badge .value {
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin-top: 4px;
+}
+
+/* -----------------------
+   Buttons (same as quiz)
+   ----------------------- */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-weight: 900;
+  cursor: pointer;
+  border: none;
+  transition: 0.25s ease;
+}
+
+/* Gold button */
+.btn.primary {
+  background: linear-gradient(90deg, #3a3a88, #201f4a);
+  color: #2b1d00;
+  box-shadow: 0 1px 32px rgb(229 226 210 / 45%);
+  color: white;
+}
+.btn.primary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 36px rgba(255,215,0,0.55);
+  cursor: pointer;
+}
+
+/* Transparent button */
+.btn.ghost {
+  background: linear-gradient(90deg, #3a3a88, #201f4a);
+  border: 2px solid rgba(255,255,255,0.22);
+  color: var(--text);
+  cursor: pointer;
+}
+.btn.ghost:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-3px) scale(1.03);
+}
+
+/* Responsive */
+@media(max-width: 820px) {
+  .title { font-size: 1.8rem; }
+  .winner-emoji { width: 110px; }
+}
+
+@media(max-width: 480px) {
+  .title { font-size: 1.4rem; }
+  .winner-emoji { width: 90px; }
+  .score-badge { width: 80%; }
+}

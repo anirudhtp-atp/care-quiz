@@ -1,0 +1,1253 @@
+/* .kbc-stage {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 18px;
+  background-image: url('/assets/stage-bg.png'), linear-gradient(185deg, #3c1964, #516c93, #5f2092);
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  overflow-y: auto;
+} */
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding: 18px;
+  background: linear-gradient(185deg, #3c1964, #516c93, #5f2092);
+  position: fixed;
+  inset: 0;
+  min-height: 100vh;
+  color: #fff;
+  perspective: 1200px;
+  overflow-y: auto;
+}
+
+.title-block {
+  text-align: center;
+  margin-top: 1.5rem;
+  flex: 1;
+}
+
+.app-title {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 2rem;
+  color: #ff9800;
+  text-shadow: 2px 2px #673ab7;
+  margin-top: 0;
+  margin-bottom: 0.2rem;
+  /* small gap to tagline */
+}
+
+.tagline {
+  font-size: 1.2rem;
+  color: #4caf50;
+  margin-top: 0;
+  /* remove default gap */
+  font-style: italic;
+}
+
+.left-panel {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start
+}
+
+.timer .circle {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffffff, #ffd700);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 900;
+  transition: all 0.3s ease
+}
+
+.timer .circle.warning {
+  background: linear-gradient(180deg, #ff4444, #ff0000);
+  color: #fff;
+  animation: pulse 0.5s infinite alternate
+}
+
+.timer .sub {
+  text-align: center;
+  margin-top: 6px;
+  font-size: 0.75rem
+}
+
+.timer.expired {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+.expired-msg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px
+}
+
+.expired-emoji {
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.6s ease;
+  display: inline-block
+}
+
+.expired-text {
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: #ff4444;
+  text-align: center
+}
+
+@keyframes pulse {
+  from {
+    box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.7)
+  }
+
+  to {
+    box-shadow: 0 0 0 10px rgba(255, 68, 68, 0)
+  }
+}
+
+:root {
+  --topbar-h: 2rem;
+}
+
+.center-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin-top: var(--topbar-h);
+  justify-content: center
+}
+
+.frame {
+  width: 100%;
+  max-width: 1100px;
+  background: linear-gradient(180deg, rgb(198 149 183 / 85%), rgb(122 74 124 / 18%));
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 10px 60px rgba(0, 0, 0, 0.7)
+}
+
+.stage-area {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem
+}
+
+.chairs {
+  display: flex;
+  gap: 6rem;
+  align-items: flex-end;
+  perspective: 1200px
+}
+
+.full-body .chair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 220px
+}
+
+.avatar-svg {
+  width: 180px;
+  height: auto;
+  display: block
+}
+
+.player-svg svg,
+.elder-svg svg {
+  width: 100%;
+  height: auto
+}
+
+.avatar-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  border-radius: 80px
+}
+
+.seat {
+  margin-top: 8px;
+  font-weight: 700;
+  color: #fff
+}
+
+.question-banner {
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 18px;
+  padding: 18px;
+  background: rgb(186 139 188 / 24%);
+  border-radius: 12px;
+  color: #fff
+}
+
+.qtext {
+  font-size: 1.45rem;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 18px
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px
+}
+
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #3a3a88, #201f4a);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.06);
+  font-weight: 800;
+  justify-content: center;
+}
+
+/* .opt:hover{
+  cursor: pointer;
+  background-color: #bbadcb;
+} */
+/*.opt-label { width:36px; height:36px; border-radius:8px; background:#ffd700; color:#000; display:inline-flex; align-items:center; justify-content:center; font-weight:900 } */
+
+/* Hover: temporary highlight while cursor is over an option */
+.opt:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.14);
+  /* use background-color */
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 0 rgba(216, 213, 194, 0);
+  border-color: rgba(222, 212, 212, 0.14);
+  cursor: pointer;
+  /* optional: gold border on hover */
+}
+
+/* Selected (after click): persistent highlight */
+.opt.selected {
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+  /* gold fill */
+  color: #2b1d00;
+  border-color: #ffd700;
+  box-shadow: 0 10px 26px rgba(255, 215, 0, 0.45);
+  transform: scale(1.04);
+}
+
+/* If you want a “correct vs wrong” color after selection: */
+.opt.selected.correct {
+  background: linear-gradient(90deg, #4ade80, #22c55e);
+  /* green */
+  color: #052e12;
+  border-color: #22c55e;
+}
+
+.opt.selected.wrong {
+  background: linear-gradient(90deg, #fda4af, #fb7185);
+  /* red/pink */
+  color: #3a0610;
+  border-color: #fb7185;
+}
+
+.opt:disabled {
+  opacity: 0.6
+}
+
+.feedback {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 12px
+}
+
+.emoji {
+  font-size: 2.25rem
+}
+
+.msg {
+  font-weight: 800
+}
+
+.next-btn {
+  margin-left: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #ffd700;
+  border: none;
+  font-weight: 900
+}
+
+.score {
+  font-weight: 900;
+  text-align: right
+}
+
+.right-panel {
+  width: 160px
+}
+
+.ladder {
+  background: linear-gradient(180deg, rgba(46, 10, 74, 0.7), rgba(26, 4, 37, 0.6));
+  padding: 8px;
+  border-radius: 8px;
+  height: 80vh;
+  overflow: hidden
+}
+
+.ladder-item {
+  padding: 8px 12px;
+  text-align: right;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  font-weight: 800;
+  opacity: 0.9
+}
+
+/* Centered overlay for feedback */
+.feedback {
+  position: fixed;
+  /* take it out of normal flow and overlay the screen */
+  inset: 0;
+  /* full-screen overlay */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* true center */
+  gap: 12px;
+  z-index: 9999;
+  /* above everything in the stage */
+  background: rgba(0, 0, 0, 0.45);
+  /* subtle dim backdrop */
+  margin: 0;
+  /* override old margin-top */
+  padding: 16px;
+}
+
+/* Feedback card styling */
+.feedback .card {
+  background: linear-gradient(180deg, #13233a, #1c2e4e);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 20px 24px;
+  color: #fff;
+  text-align: center;
+  max-width: 540px;
+  width: calc(100% - 48px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+}
+
+.feedback .emoji {
+  font-size: 3rem;
+  /* bigger for center focus */
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.feedback .msg {
+  font-weight: 800;
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.feedback .next-btn {
+  margin-left: 0;
+  /* center */
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: #ffd700;
+  border: none;
+  font-weight: 900;
+  color: #000;
+  cursor: pointer;
+}
+
+
+
+@media (max-width: 900px) {
+  .center-panel {
+    height: auto
+  }
+
+  .full-body .chair {
+    width: 120px
+  }
+
+  .avatar-svg {
+    width: 110px
+  }
+}
+
+
+/* NEW: top bar */
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* padding: 12px 16px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0));
+  backdrop-filter: blur(4px); */
+}
+
+.back-btn {
+  padding: 8px 14px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.back-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.score-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  font-weight: 900;
+}
+
+.score-card .score {
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+  color: #2b1d00;
+  box-shadow: 0 6px 18px rgba(255, 215, 0, 0.35);
+}
+
+.score-card .progress {
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 600px) {
+  .top-bar {
+    flex-direction: column; /* stack items vertically */
+    align-items: center;
+    justify-content: center;
+  }
+
+  .back-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .title-block {
+    order: 2; /* keep title in middle */
+    margin: 8px 0;
+  }
+
+  .score-card {
+    order: 3;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .app-title {
+    font-size: 1.6rem; /* shrink title */
+  }
+
+  .tagline {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* Feedback + Round complete cards */
+.feedback .card,
+.round-complete .card {
+  margin-top: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  padding: 16px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+.feedback .emoji {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.feedback .msg {
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.next-btn,
+.play-again,
+.home-btn {
+  margin: 6px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.next-btn,
+.play-again {
+  background: linear-gradient(90deg, #ffd700, #ffed4e);
+  color: #2b1d00;
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.35);
+}
+
+.next-btn:hover,
+.play-again:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 28px rgba(255, 215, 0, 0.45);
+}
+
+.home-btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.home-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.round-complete .big-emoji {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.round-complete .title {
+  font-size: 1.4rem;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+
+.round-complete .summary {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 480px) {
+  .score-card .score {
+    font-size: 0.9rem;
+  }
+
+  .score-card .progress {
+    font-size: 0.85rem;
+  }
+}
+
+
+/* Hide A/B/C/D label without removing template lines */
+.opt .opt-label {
+  display: none;
+}
+
+/* =========================
+   LAYOUT FIX (overrides only)
+   ========================= */
+
+/* 1) Stack top bar on top, stage content below */
+.kbc-stage {
+  flex-direction: column;
+  /* override: row -> column */
+}
+
+/* 2) Top bar becomes its own row inside the stage */
+.top-bar {
+  flex: 0 0 var(--topbar-h);
+  /* uses your --topbar-h: 2rem */
+  width: 100%;
+}
+
+/* 3) Center panel fills the remaining space under the top bar */
+.kbc-stage .center-panel {
+  /* Override previous fixed viewport height and extra margin */
+  flex: 1 1 auto;
+  height: auto;
+  margin-top: 0;
+  min-height: 0;
+  width: 100%;
+  /* allow flex child to shrink properly */
+}
+
+
+
+/* ===========================
+   EMOJI POP + CARD UNDER (FIXED CLICKS)
+   =========================== */
+
+/* Overlay above everything AND accepts pointer events */
+.emoji-overlay {
+  /* existing properties you already have ... */
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  /* above everything */
+  display: flex;
+  flex-direction: column;
+  /* emoji above, card below */
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  padding-top: 14vh;
+
+  /* IMPORTANT: allow clicks on the card */
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.15);
+  /* subtle dim */
+  backdrop-filter: blur(6px) saturate(110%);
+  /* << blur everything behind */
+  -webkit-backdrop-filter: blur(6px) saturate(110%);
+  /* Safari */
+}
+
+/* Emoji+sparkles layer should NOT block clicks */
+.emoji-stack {
+  position: relative;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  /* <-- emoji doesn't eat clicks */
+}
+
+/* The feedback card area IS clickable */
+.feedback-under-emoji {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  pointer-events: auto;
+  /* <-- clicks enabled for Next button */
+}
+
+.feedback-under-emoji .card {
+  background: linear-gradient(185deg, #3c1964, #516c93);
+  /* border: 2px solid rgba(255,255,255,0.08); */
+  border-radius: 14px;
+  padding: 20px 24px;
+  color: #fff;
+  text-align: center;
+  max-width: 540px;
+  width: calc(100% - 48px);
+  box-shadow: 0 12px 48px rgb(180 159 159 / 50%);
+  position: relative;
+  z-index: 1;
+  /* ensure it renders above any stage content */
+}
+
+/* Animated emoji image */
+.emoji-pop {
+  width: min(220px, 50vw);
+  height: auto;
+  animation: popJump 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transform: translateY(60vh) scale(0.2);
+  /* safe starting pose */
+}
+
+/* Slide up + scale + soft bounce; stops higher (padding-top defines landing height) */
+@keyframes popJump {
+  0% {
+    transform: translateY(60vh) scale(0.2);
+    opacity: 0;
+  }
+
+  60% {
+    transform: translateY(0) scale(1.08);
+    opacity: 1;
+  }
+
+  80% {
+    transform: translateY(-10px) scale(0.96);
+  }
+
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Sparkle burst over the emoji (click-through) */
+.sparkles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #fff 0%, #fff 40%, #ffd700 60%, rgba(255, 215, 0, 0) 70%);
+  opacity: 0;
+  animation: sparkleBurst 700ms ease-out forwards;
+  animation-delay: 250ms;
+  /* kick in after emoji starts popping */
+}
+
+/* 12 spokes */
+.sparkle:nth-child(1) {
+  --dx: 0px;
+  --dy: -90px;
+}
+
+sparkle:nth-child(2) {
+  --dx: 45px;
+  --dy: -78px;
+}
+
+.sparkle:nth-child(3) {
+  --dx: 78px;
+  --dy: -45px;
+}
+
+.sparkle:nth-child(4) {
+  --dx: 90px;
+  --dy: 0px;
+}
+
+.sparkle:nth-child(5) {
+  --dx: 78px;
+  --dy: 45px;
+}
+
+.sparkle:nth-child(6) {
+  --dx: 45px;
+  --dy: 78px;
+}
+
+.sparkle:nth-child(7) {
+  --dx: 0px;
+  --dy: 90px;
+}
+
+.sparkle:nth-child(8) {
+  --dx: -45px;
+  --dy: 78px;
+}
+
+.sparkle:nth-child(9) {
+  --dx: -78px;
+  --dy: 45px;
+}
+
+.sparkle:nth-child(10) {
+  --dx: -90px;
+  --dy: 0px;
+}
+
+.sparkle:nth-child(11) {
+  --dx: -78px;
+  --dy: -45px;
+}
+
+.sparkle:nth-child(12) {
+  --dx: -45px;
+  --dy: -78px;
+}
+
+@keyframes sparkleBurst {
+  0% {
+    transform: translate(0, 0) scale(0.2);
+    opacity: 0;
+    filter: drop-shadow(0 0 0 rgba(255, 215, 0, 0));
+  }
+
+  30% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9));
+  }
+
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0.9);
+    opacity: 0;
+    filter: drop-shadow(0 0 0 rgba(255, 215, 0, 0));
+  }
+}
+
+/* ===========================
+   BEAUTIFIED SPARKLES + PERSISTENT EMOJI GLOW
+   =========================== */
+
+/* Keep the overlay setup you already have; we only refine visuals */
+.emoji-overlay {
+  /* stays above & blurs stage as you set before */
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(6px) saturate(110%);
+  -webkit-backdrop-filter: blur(6px) saturate(110%);
+}
+
+/* ---- PERSISTENT GLOW AROUND EMOJI ---- */
+
+/* The emoji image still runs popJump.
+   Add a persistent glow that starts after the jump (900ms) and loops. */
+.emoji-pop {
+  /* existing animation: popJump ... forwards; keep it */
+  /* add a second animation for glow (starts after 900ms) */
+  animation: popJump 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards,
+    emojiGlow 2400ms ease-in-out 900ms infinite alternate;
+  /* base soft glow so even before animation it’s a little lit */
+  filter: drop-shadow(0 0 0 rgba(255, 215, 0, 0.0));
+  will-change: transform, opacity, filter;
+}
+
+/* glow animation pulses the drop-shadow intensity softly */
+@keyframes emojiGlow {
+  0% {
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.35)) drop-shadow(0 0 12px rgba(255, 215, 0, 0.25));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.55)) drop-shadow(0 0 22px rgba(255, 225, 100, 0.40));
+  }
+
+  100% {
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.45)) drop-shadow(0 0 16px rgba(255, 225, 100, 0.32));
+  }
+}
+
+/* Add a golden halo ring that breathes under the emoji */
+.emoji-stack {
+  position: relative;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  /* don’t block clicks */
+}
+
+/* pulsing radial halo */
+.emoji-stack::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: 140%;
+  height: 140%;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+      rgba(255, 230, 120, 0.45) 0%,
+      rgba(255, 215, 0, 0.28) 30%,
+      rgba(255, 215, 0, 0.12) 55%,
+      rgba(255, 215, 0, 0.0) 70%);
+  transform: scale(0.92);
+  opacity: 0.0;
+  animation: haloPulse 2600ms ease-in-out 900ms infinite;
+}
+
+@keyframes haloPulse {
+  0% {
+    transform: scale(0.90);
+    opacity: 0.0;
+  }
+
+  30% {
+    transform: scale(1.00);
+    opacity: 0.55;
+  }
+
+  60% {
+    transform: scale(1.05);
+    opacity: 0.35;
+  }
+
+  100% {
+    transform: scale(0.95);
+    opacity: 0.15;
+  }
+}
+
+/* ===========================
+   BEAUTIFIED SPARKLES ONLY
+   =========================== */
+
+/* Centered container (you likely already have this, safe to override) */
+.sparkles {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  /* additive glow over scene */
+  overflow: visible;
+}
+
+/* Base sparkle (round light) with improved look */
+.sparkle {
+  position: absolute;
+  --size: 10px;
+  /* default size; varied below */
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 1) 38%,
+      rgba(255, 225, 130, 0.95) 58%,
+      rgba(255, 215, 0, 0.0) 78%);
+  opacity: 0;
+  transform-origin: center;
+  will-change: transform, opacity, filter;
+
+  /* layered glow + subtle blur */
+  filter:
+    blur(0.25px) drop-shadow(0 0 6px rgba(255, 215, 0, 0.65)) drop-shadow(0 0 12px rgba(255, 230, 140, 0.45));
+
+  /* sequence: burst outward + slight twinkle while fading */
+  animation:
+    sparkleBurst 780ms cubic-bezier(0.16, 0.9, 0.3, 1) forwards,
+    sparkleTwinkle 900ms ease-in-out 220ms 1 alternate;
+  animation-delay: 250ms;
+  /* begins shortly after emoji starts popping */
+}
+
+/* Trajectory + fade */
+@keyframes sparkleBurst {
+  0% {
+    transform: translate(0, 0) scale(0.25) rotate(0deg);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0.95) rotate(160deg);
+    opacity: 0;
+  }
+}
+
+/* Micro flicker for life-like sparkle */
+@keyframes sparkleTwinkle {
+  0% {
+    filter: blur(0.25px) drop-shadow(0 0 6px rgba(255, 215, 0, 0.65));
+  }
+
+  50% {
+    filter: blur(0.8px) drop-shadow(0 0 12px rgba(255, 240, 160, 0.95));
+  }
+
+  100% {
+    filter: blur(0.35px) drop-shadow(0 0 8px rgba(255, 220, 100, 0.7));
+  }
+}
+
+/* Vary sizes for depth */
+.sparkle:nth-child(3n) {
+  --size: 8px;
+}
+
+.sparkle:nth-child(4n) {
+  --size: 12px;
+}
+
+.sparkle:nth-child(5n) {
+  --size: 16px;
+}
+
+.sparkle:nth-child(7n) {
+  --size: 6px;
+}
+
+/* Add tiny cross "star rays" to half the sparkles */
+.sparkle:nth-child(odd)::before,
+.sparkle:nth-child(odd)::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 140%;
+  height: 2px;
+  border-radius: 2px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0));
+  filter: drop-shadow(0 0 6px rgba(255, 240, 160, 0.9));
+}
+
+.sparkle:nth-child(odd)::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Directions (12 spokes) — FIXED a typo: ensure the selector has a dot .sparkle */
+.sparkle:nth-child(1) {
+  --dx: 0px;
+  --dy: -95px;
+}
+
+.sparkle:nth-child(2) {
+  --dx: 45px;
+  --dy: -82px;
+}
+
+.sparkle:nth-child(3) {
+  --dx: 80px;
+  --dy: -46px;
+}
+
+.sparkle:nth-child(4) {
+  --dx: 95px;
+  --dy: 0px;
+}
+
+.sparkle:nth-child(5) {
+  --dx: 80px;
+  --dy: 46px;
+}
+
+.sparkle:nth-child(6) {
+  --dx: 45px;
+  --dy: 82px;
+}
+
+.sparkle:nth-child(7) {
+  --dx: 0px;
+  --dy: 95px;
+}
+
+.sparkle:nth-child(8) {
+  --dx: -45px;
+  --dy: 82px;
+}
+
+.sparkle:nth-child(9) {
+  --dx: -80px;
+  --dy: 46px;
+}
+
+.sparkle:nth-child(10) {
+  --dx: -95px;
+  --dy: 0px;
+}
+
+.sparkle:nth-child(11) {
+  --dx: -80px;
+  --dy: -46px;
+}
+
+.sparkle:nth-child(12) {
+  --dx: -45px;
+  --dy: -82px;
+}
+
+/* =========================
+   QUESTION DIALOGUE BUBBLE (Grandpa -> Kid) — PRO STYLING
+   ========================= */
+
+/* Row: player (left) – bubble (center) – grandpa (right) */
+.avatar-q-row {
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 1.3fr) 1fr;
+  gap: 2.4rem;
+  align-items: center;
+  /* seats align nicely along bottom */
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.5rem 0;
+}
+
+/* Keep avatar blocks consistent with chair visuals */
+.avatar-q-row .chair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-q-row .avatar-svg {
+  width: 180px;
+}
+
+@media (max-width: 900px) {
+  .avatar-q-row .avatar-svg {
+    width: 130px;
+  }
+}
+
+/* Center bubble container */
+.q-bubble {
+  display: grid;
+  place-items: center;
+}
+
+/* Glassy speech bubble with subtle depth and inner glow */
+.q-bubble .bubble {
+  position: relative;
+  max-width: 100%;
+  padding: 16px 18px;
+  border-radius: 14px;
+  text-align: center;
+  color: #fff;
+
+  /* glass panel */
+  background: linear-gradient(90deg, #3a3a88, #201f4a);
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35),
+    inset 0 0 12px rgba(255, 255, 255, 0.06);
+
+  /* gentle highlight edge */
+  outline: 1px solid rgba(255, 255, 255, 0.07);
+  outline-offset: -6px;
+
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+/* Hover/attention micro interaction (optional, looks premium) */
+.q-bubble .bubble:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 14px 36px rgba(0, 0, 0, 0.45),
+    inset 0 0 16px rgba(255, 255, 255, 0.08);
+}
+
+/* The question text inside bubble */
+.q-bubble .bubble-text {
+  font-size: 1.25rem;
+  font-weight: 900;
+  line-height: 1.28;
+  margin: 0;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Bubble tail pointing toward Grandpa (right side) */
+.q-bubble .bubble .tail {
+  position: absolute;
+  right: -18px;
+  /* aim at Grandpa side */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 18px solid rgba(255, 255, 255, 0.22);
+  /* border color match */
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.25));
+}
+
+/* Inner fill for tail to match bubble bg */
+.q-bubble .bubble .tail::after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  right: -16px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 16px solid rgba(255, 255, 255, 0.14);
+  /* inner glass fill */
+}
+
+/* RESPONSIVE: stack vertically on small screens */
+@media (max-width: 560px) {
+  .avatar-q-row {
+    grid-template-columns: 1fr;
+    /* stack: player -> bubble -> grandpa */
+    gap: 1rem;
+  }
+
+  .q-bubble .bubble {
+    margin: 0 auto;
+  }
+
+  /* Tail not necessary on stacked; hide for cleaner look (optional) */
+  .q-bubble .bubble .tail,
+  .q-bubble .bubble .tail::after {
+    display: none;
+  }
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .q-bubble .bubble,
+  .q-bubble .bubble:hover {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+.question-banner .qtext {
+  display: none;
+}
+
+
+.credits {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  display: flex;          /* inline row */
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  z-index: 1000;
+}
+
+.credit-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ccc;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.credit-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #eee;
+}
+
+.credit-links {
+  display: inline-flex;   /* inline row */
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.credit-links a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.75rem;
+}
+
+.credit-links a:hover {
+  color: #ffd700;
+  text-decoration: underline;
+}

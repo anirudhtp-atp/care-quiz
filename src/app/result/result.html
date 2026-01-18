@@ -1,0 +1,19 @@
+
+<!-- src/app/result.component.html -->
+<div class="result-wrap">
+  <div class="card">
+    <img [src]="winnerEmojiSrc" alt="Winner" class="winner-emoji" />
+    <h1 class="title">Congratulations, {{ userName }}!!!</h1>
+    <p class="subtitle">You did amazing this round.</p>
+
+    <div class="score-badge">
+      <div class="label">Your Score</div>
+      <div class="value">{{ score }} / {{ total }}</div>
+    </div>
+
+    <div class="actions">
+      <button class="btn primary" (click)="playAgain()">Play Again</button>
+      <button class="btn ghost" (click)="home()">Back to Home</button>
+    </div>
+  </div>
+</div>

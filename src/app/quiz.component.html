@@ -1,0 +1,153 @@
+<div class="center">
+  <!-- NEW: Top bar with Back button + Score (per-round) -->
+  <div class="top-bar">
+    <button class="back-btn" (click)="backToHome()">← Back</button>
+    <div class="title-block">
+      <h1 class="app-title">Silver Sentinels</h1>
+      <h3 class="tagline">Heroes Who Protect with Care!</h3>
+    </div>
+    <div class="score-card">
+      <div class="score">Score: {{ roundScore }}</div> <!-- NEW: per-round score shown -->
+      <div class="progress" *ngIf="!roundComplete">
+        Q {{ currentIndex + 1 }} / {{ roundQuestions.length }}
+      </div>
+    </div>
+  </div>
+  <!-- <div class="left-panel">
+    <div class="timer" [class.expired]="timeExpired">
+      <div class="circle" [class.warning]="timeLeft <= 5 && timeLeft > 0">{{ timeLeft }}</div>
+      <div class="sub" *ngIf="!timeExpired">Time</div>
+      <div class="expired-msg" *ngIf="timeExpired">
+        <div class="expired-emoji" (click)="rotateEmoji()" [style.transform]="'rotate(' + emojiRotation + 'deg)'">⏰</div>
+        <div class="expired-text">Time's Up!</div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="center-panel">
+    <div class="frame">
+      <div class="stage-area full-stage">
+
+        <!-- NEW: Avatar–Question row (Grandpa asks the kid) -->
+        <div class="avatar-q-row" *ngIf="question">
+          <!-- Left: Player -->
+          <div class="chair player">
+            <div class="avatar-svg player-svg" aria-hidden="true">
+              <img *ngIf="state.selectedAvatar && state.selectedAvatar.startsWith('/')" [src]="state.selectedAvatar"
+                alt="player" class="avatar-img" />
+              <ng-container *ngIf="!state.selectedAvatar || !state.selectedAvatar.startsWith('/')">
+                <!-- simple stylized full-body SVG for player (facing right) -->
+              </ng-container>
+            </div>
+            <div class="seat">{{ state.userName }}</div>
+          </div>
+
+          <!-- Center: Dialogue bubble (Grandpa's question) -->
+          <!-- <div class="q-bubble">
+            <div class="bubble">
+              <div class="bubble-text">{{ question?.text }}</div>
+              <span class="tail"></span>
+            </div>
+          </div> -->  
+          <div class="qtext">{{ question?.text }}</div>
+
+          <!-- Right: Grandpa -->
+          <div class="chair elder">
+            <div class="avatar-svg elder-svg" aria-hidden="true">
+              <img src="/assets/avatars/elder.png" alt="elder" class="avatar-img" />
+              <ng-container *ngIf="false"></ng-container>
+            </div>
+            <div class="seat">Grandpa</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="question-banner">
+      <div *ngIf="question">
+        <!-- <div class="qtext">{{ question?.text }}</div> -->
+
+        <div class="options-grid">
+          <button class="opt" *ngFor="let o of question?.options; let i = index" (click)="selectOption(i)"
+            [disabled]="optionsDisabled" [class.selected]="selectedIndex === i"
+            [class.correct]="selectedIndex === i && state.lastResult === 'correct'"
+            [class.wrong]="selectedIndex === i && state.lastResult === 'wrong'">
+            <span class="opt-label">{{ i === 0 ? 'A' : i === 1 ? 'B' : i === 2 ? 'C' : 'D' }}</span>
+            <span class="opt-text">{{ o }}</span>
+          </button>
+        </div>
+      </div>
+      <!-- OLD (now unused): feedback was here
+      <div class="feedback" *ngIf="showFeedback">
+        <div class="card">
+          <div class="emoji">{{ state.lastResult === 'correct' ? '👏' : '😢' }}</div>
+          <div class="msg">{{ feedbackMessage }}</div>
+          <button class="next-btn" (click)="next()">Next</button>
+        </div>
+      </div>
+      -->
+    </div>
+
+    <!-- Round complete summary -->
+    <div class="round-complete" *ngIf="roundComplete">
+      <div class="card">
+        <div class="big-emoji">🏆</div>
+        <div class="title">Round Complete!</div>
+        <div class="summary">Your score: {{ roundScore }} / {{ roundQuestions.length }}</div>
+        <div class="actions">
+          <button class="play-again" (click)="playAgain()">Play Again</button>
+          <button class="home-btn" (click)="backToHome()">Back to Home</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NEW: Emoji pop + Sparkles + Feedback card (all in one overlay) -->
+  <div class="emoji-overlay" *ngIf="showEmojiOverlay">
+    <div class="emoji-stack">
+      <img [src]="emojiSrc" [alt]="emojiAlt" class="emoji-pop" (animationend)="onEmojiAnimationEnd()" />
+
+      <!-- Sparkle burst only for correct answers -->
+      <div class="sparkles" *ngIf="state.lastResult === 'correct'">
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+        <span class="sparkle"></span>
+      </div>
+    </div>
+
+    <!-- The feedback card appears JUST BELOW the emoji, after animation -->
+    <div class="feedback-under-emoji" *ngIf="showFeedback">
+      <div class="card">
+        <!-- <div class="emoji">{{ state.lastResult === 'correct' ? '👏' : '😢' }}</div> -->
+        <div class="msg" [innerHTML]="feedbackMessage"></div>
+        <button class="next-btn" (click)="next()">Next</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="credits">
+  <button (click)="toggleCredits()" class="credit-btn">
+    {{ showCredits ? 'Hide Credits' : 'Show Credits' }}
+  </button>
+
+  <div *ngIf="showCredits" class="credit-links">
+    <a href="https://www.vecteezy.com/free-png/portrait">Portrait PNGs by Vecteezy</a>
+    <a href="https://www.vecteezy.com/free-png/female">Female PNGs by Vecteezy</a>
+    <a href="https://www.vecteezy.com/free-png/cyborg">Cyborg PNGs by Vecteezy</a>
+    <a href="https://www.vecteezy.com/free-png/cyberpunk">Cyberpunk PNGs by Vecteezy</a>
+    <a href="https://www.vecteezy.com/free-png/superhero-kid">Superhero Kid PNGs by Vecteezy</a>
+    <a href="https://www.vecteezy.com/free-png/digital">Digital PNGs by Vecteezy</a>
+  </div>
+</div>

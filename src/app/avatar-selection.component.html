@@ -1,0 +1,44 @@
+<div class="center">
+  <div class="title-block">
+    <h1 class="app-title">Silver Sentinels</h1>
+    <h3 class="tagline">Heroes Who Protect with Care!</h3>
+  </div>
+
+  <div class="name">
+    <h2>Who's here ?</h2>
+
+    <input type="text" [(ngModel)]="userName" placeholder="Type your name" autofocus #nameInput
+      [class.highlight]="highlightInput" />
+
+  </div>
+  <h2>Select your Avatar</h2>
+
+  <!-- <div class="classes">
+    <button *ngFor="let c of classes" (click)="selectedClass = c" [class.active]="selectedClass === c">Class {{ c }}</button>
+  </div> -->
+
+  <div class="avatars">
+    <button *ngFor="let a of avatars" (click)="selectedAvatar = a.id" [class.active]="selectedAvatar === a.id">
+      <img *ngIf="a.img" [src]="a.img" alt="{{a.id}}" class="avatar-thumb" />
+      <span *ngIf="!a.img">{{ a.label }}</span>
+    </button>
+  </div>
+
+  <button class="start" (click)="start()" [disabled]="!userName || !selectedAvatar">Start Quiz</button>
+
+</div>
+
+<div class="credits">
+  <button (click)="toggleCredits()" class="credit-btn">
+    {{ showCredits ? 'Hide Credits' : 'Show Credits' }}
+  </button>
+
+  <div *ngIf="showCredits" class="credit-links">
+    <a href="https://www.vecteezy.com/free-png/portrait">Portrait PNGs by Vecteezy</a>
+    <a href="https://www.vecteezy.com/free-png/female">Female PNGs by Vecteezy</a>
+    <a href="https://www.vecteezy.com/free-png/cyborg">Cyborg PNGs by Vecteezy</a>
+    <a href="https://www.vecteezy.com/free-png/cyberpunk">Cyberpunk PNGs by Vecteezy</a>
+    <a href="https://www.vecteezy.com/free-png/superhero-kid">Superhero Kid PNGs by Vecteezy</a>
+    <a href="https://www.vecteezy.com/free-png/digital">Digital PNGs by Vecteezy</a>
+  </div>
+</div>
